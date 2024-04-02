@@ -1,33 +1,37 @@
 
-import React from "react";
 import './Tweet.css'
+import TweetImage from '../tweet-image/TweetImage';
+import TweetUser from '../tweet-user/TweetUser';
+import TweetTimestamp from '../tweet-timestamp/TweetTimestamp';
+import TweetMessage from '../tweet-message/TweetMessage';
+import TweetComponents from '../tweet-components/TweetComponents';
 
-function Tweet(props) {
+function Tweet({ tweetsArray }) {
 
-  const { image, name, handle, timestamp, message } = props;
   return (
-    <div className="tweet">
+    <ul>
+    {tweetsArray.map((tweet) => (
+    <div className="tweet" key={tweet.timestamp}>
       <div className="top">
-        <img src={image} className="profile" alt="profile"/>
+        <TweetImage image={ tweet.user.image } />
         <div className="content">
           <div className="user-data"> 
-            <span className="name">{name}</span>
-            <span className="secondary-data">@{handle} · {timestamp}</span>
+            <TweetUser name={ tweet.user.name } handle={ tweet.user.handle } />
+            <TweetTimestamp timestamp={ tweet.timestamp } />
           </div>
           <div className="message">
-            <p>{message}</p>
+            <TweetMessage message={ tweet.message } />
             <div>
-              <i className="far fa-comment button" data-testid="comment-icon"></i>
-              <i className="fas fa-retweet button" data-testid="retweet-icon"></i>
-              <i className="far fa-heart button" data-testid="heart-icon"></i>
-              <i className="fas fa-share button" data-testid="share-icon"></i>
+              <TweetComponents />
             </div>
           </div>
         </div>
       </div>
       <i className="fas fa-ellipsis-h"></i>
     </div>
+    ))}
+    </ul>
   );
+    
 }
-
 export default Tweet;

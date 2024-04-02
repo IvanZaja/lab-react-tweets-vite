@@ -27,11 +27,25 @@ img {
 
 .user-data{
     margin-top: 10px;
+    flex-direction:row;
+    justify-content: start;
+    display: flex;
+}
+.user {
+    display: flex;
+    align-items: center;
 }
 
-.name {
+.user h5 {
     font-weight: bold;
     margin: 0 5px;
+    font-size:medium;
+}
+
+.user p {
+    margin: 0 5px;
+    font-size: small;
+    color: #8a8a8a;
 }
 
 .secondary-data {
